@@ -29,6 +29,7 @@ _markers = [];
 _newTerritoryOwners = [];
 _newTerritoryDetails = [];
 _groupCaptures = [];
+_oldMarkerGroups = [];
 {
 	_found = false;
 	_markerId = _x select 0;	// markerID
@@ -41,6 +42,7 @@ _groupCaptures = [];
 	_markerTimer = _x select 6;
 	_markerGroup = _x select 7;  // ownerGroup
 	_markerGroupUIDs = _x select 8; // ownerGroupUIDs
+	_oldMarkerGroup = grpNull;
 	
 	if (!(_markerTeam in [sideUnknown])) then {
 		// Special handling for independent's joining ...
@@ -67,25 +69,27 @@ _groupCaptures = [];
 						_groupCaptures = (_playerGroup getVariable ["currentTerritories", []]) + [_markerName];
 						_playerGroup setVariable ["currentTerritories", _groupCaptures, true];
 						
+						// update maps on members of the group previously owning the territory
+						["pvar_updateTerritoryMarkers", [_markerGroup, [[_markerName], false, _playerGroup, false]]] call fn_publicVariableAll;
+						
 						// set the marker's group ownership to the player's group
 						_markerGroup = _playerGroup;
 						_markerGroupUIDs = _playerUID;
 
 						diag_log format ["[INFO] updateConnectingClients: player %1 UID is in markerCaptureUIDs for %2 -> assigning marker to playerGroup (%3) (PRI 1 Assign)", _player, _markerName, _markerGroup];
 						_found = true;
-					};
-					
-					if (_playerUID in [_markerGroupUIDs] && {!_found}) then 
-					{
-						// Indy player was previously member of a now non-recognized group that still owns this territory ... re-assign group ownership, but keep other UIDs
-						_markerGroup = _playerGroup;
-						
-						// add the marker to the player's group's "currentTerritories" var
-						_groupCaptures = (_playerGroup getVariable ["currentTerritories", []]) + [_markerName];
-						_playerGroup setVariable ["currentTerritories", _groupCaptures, true];
-						
-						diag_log format ["[INFO] updateConnectingClients: player %1 UID is in markerGroupUIDs for %2 for null group -> assigning marker to player's group (%3) (PRI 3 Assign)", _player, _markerName, _markerGroup];
-
+					} else {
+						if (_playerUID in [_markerGroupUIDs] && {!_found}) then 
+						{
+							// Indy player was previously member of a now non-recognized group that still owns this territory ... re-assign group ownership, but keep other UIDs
+							_markerGroup = _playerGroup;
+							
+							// add the marker to the player's group's "currentTerritories" var
+							_groupCaptures = (_playerGroup getVariable ["currentTerritories", []]) + [_markerName];
+							_playerGroup setVariable ["currentTerritories", _groupCaptures, true];
+							
+							diag_log format ["[INFO] updateConnectingClients: player %1 UID is in markerGroupUIDs for %2 for null group -> assigning marker to player's group (%3) (PRI 3 Assign)", _player, _markerName, _markerGroup];
+						};
 					};
 				};
 				
@@ -100,6 +104,12 @@ _groupCaptures = [];
 	
 	_newTerritoryDetails pushBack [_markerId, _markerName, _markerCaptureUIDs, _markerCapturePlayers, _markerTeam, _markerChrono, _markerTimer, _markerGroup, _markerGroupUIDs];
 	_newTerritoryOwners pushBack [_markerName, _markerTeam2];	// territory/team|group
+	
+	if (!(_oldMarkerGroup in _oldMarkerGroups)) then
+	{
+		_oldMarkerGroups = _oldMarkerGroups + [_oldMarkerGroup];
+	};
+	
 } forEach currentTerritoryDetails;
 	
 if !(A3W_currentTerritoryOwners isEqualTo _newTerritoryOwners) then
@@ -112,12 +122,13 @@ if !(A3W_currentTerritoryOwners isEqualTo _newTerritoryOwners) then
 if !(currentTerritoryDetails isEqualTo _newTerritoryDetails) then
 {
 	if (monitorTerritoriesActive) then {
-		diag_log "[INFO] updateConnectingClients wait on monitorTerritories to go inactive";
+		diag_log text "[INFO] updateConnectingClients wait on monitorTerritories to go inactive";
 		waitUntil {!monitorTerritoriesActive};
-		diag_log "INFO] updateConnectingClients resume";
+		diag_log text "INFO] updateConnectingClients resume";
 	};
 	// update currentTerritoryDetails if any parts of it changed
 	currentTerritoryDetails = _newTerritoryDetails;
+	diag_log text "[INFO] updateConnectingClients: updated currentTerritoryDetails array";
 };
 
 if (_JIP) then 
@@ -128,3 +139,4 @@ if (_JIP) then
 	// return the result to local caller to return back to the client as a targeted pvar for use on the client
 	[_markers, true]
 };
+
