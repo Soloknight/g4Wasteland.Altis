@@ -6,7 +6,7 @@
 //  @file Modified by Munch to handle Indy group changes and modify territory ownerships, if any
 //  Note: pvar_processGroupInvite = ["accept", _playerUID, _oldGroup, _newGroup]
 
-private ["_type", "_sender", "_receiver", "_invite", "_receiverUID", "_oldGroup", "_newGroup", "_newTerritories", "_oldTerritories", "_senderUID", "_playerUID"];
+private ["_type", "_sender", "_receiver", "_invite", "_receiverUID", "_oldGroup", "_newGroup", "_newTerritories", "_oldTerritories", "_senderUID", "_playerUID", "_player", "_oldGroups"];
 
 diag_log format ["{INFO] processGroupInvite invoked with _this='%1'",_this];
 
