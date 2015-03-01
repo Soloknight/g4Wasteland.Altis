@@ -116,7 +116,7 @@ _oldMarkerGroups = [];
 								//diag_log format ["[INFO] updateConnectingClients: updated territory persistence data with [%1,%2,%3,%4,%5,%6,%7]",_markerId, _markerName, _markerCaptureUIDs, _markerTeam, _markerChrono, _playerGroup, _playerUID];
 							};
 							
-							diag_log format ["[INFO] updateConnectingClients: player %1 UID is in markerGroupUIDs for %2 for null group -> assigning marker to player's group (%3) (PRI 3 Assign)", _player, _markerName, _markerGroup];
+							//diag_log format ["[INFO] updateConnectingClients: player '%1' UID is in markerGroupUIDs for %2 for null group -> assigning marker to player's group (%3) (PRI 3 Assign)", _player, _markerName, _markerGroup];
 						}
 					};
 				};
