@@ -41,7 +41,7 @@ switch (_donatorLevel) do
 {
 	case 1:
 	{
-		_player addBackpack "B_AssaultPack_rgr";
+_player addBackpack "B_AssaultPack_rgr";
 		_player addVest "V_BandollierB_cbr";
 		_player addMagazine "11Rnd_45ACP_Mag";
 		_player addWeapon "hgun_Pistol_heavy_01_F";
@@ -204,13 +204,13 @@ switch (_donatorLevel) do
 	default 
 	{
 		_player addBackpack "B_AssaultPack_rgr";
-		_player addMagazine "9Rnd_45ACP_Mag";
-		_player addWeapon "hgun_ACPC2_F";
-		_player addMagazine "9Rnd_45ACP_Mag";
-		_player addMagazine "9Rnd_45ACP_Mag";
-		_player addMagazine "9Rnd_45ACP_Mag";
-		_player addItem "FirstAidKit";
-		_player selectWeapon "hgun_ACPC2_F";
+_player addMagazine "9Rnd_45ACP_Mag";
+_player addWeapon "hgun_ACPC2_F";
+_player addMagazine "9Rnd_45ACP_Mag";
+_player addMagazine "9Rnd_45ACP_Mag";
+_player addMagazine "9Rnd_45ACP_Mag";
+_player addItem "FirstAidKit";
+_player selectWeapon "hgun_ACPC2_F";
 	};
 	
 };
