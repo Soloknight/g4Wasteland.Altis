@@ -140,3 +140,15 @@ class CfgSounds
                                 titles[] = {};
 			};
 };
+
+class CfgMusic
+{
+ tracks[]={};
+ 
+ class introSong
+        {
+        //name = "introSong";
+        //sound[] = {"\music\introSong.ogg", db+0, 1.0};
+        };
+};
+ 
