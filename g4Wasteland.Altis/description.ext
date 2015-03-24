@@ -41,7 +41,6 @@ loadScreen = "mapConfig\Loading.jpg";
 #include "addons\far_revive\revive_gui.hpp"
 #include "client\systems\playerMenu\dialog\player_settings.hpp"
 #include "client\systems\groups\dialog\groupManagement.hpp"
-#include "client\systems\groups\dialog\groupManagement.hpp"
 #include "client\systems\gunStore\dialog\gunshop_settings.hpp"
 #include "client\systems\generalStore\dialog\genstore_settings.hpp"
 #include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"
@@ -141,14 +140,5 @@ class CfgSounds
 			};
 };
 
-class CfgMusic
-{
- tracks[]={};
- 
- class introSong
-        {
-        //name = "introSong";
-        //sound[] = {"\music\introSong.ogg", db+0, 1.0};
-        };
-};
+
  
