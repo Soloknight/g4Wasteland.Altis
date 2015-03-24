@@ -10,22 +10,21 @@ client_firstSpawn = true;
 
 [] execVM "client\functions\welcomeMessage.sqf";
 //set client side view distance on spawn
-// systemChat format["Optimizing Video Settings"];
-// setViewDistance 1000;
-// setObjectViewDistance 900;
-// setTerrainGrid 40;
+systemChat format["Optimizing Shadow Settings"];
+setShadowDistance 0;
+//setObjectViewDistance 900;
+//setTerrainGrid 40;
 	
-[format ['Hello %1! <br/>Please DO NOT Spam the Sidechat, use Groups.<br/>Have fun and play fair!', name player], "Welcome to g4-gamers.com Altis"] spawn BIS_fnc_guiMessage;
+[format ['Hello %1! <br/>Please DO NOT Spam the Sidechat, use Groups.<br/>Have fun and play fair!', name player], "Welcome to g4-gamers.com Stratis"] spawn BIS_fnc_guiMessage;
 	
 [] execVM "addons\credits\welcome.sqf";
 
-// This is for the reward for playing from GoT
-// if this is the first spawn start the timer
-if(format["%1",firstspawn] == format["%1","1"]) then {
-	[] spawn rewardForPlaying;
+// GoT addition - if this is the first spawn start the loyalty-timer
+if(format["%1",firstspawn] == format["%1","1"]) then 
+{
+	[] spawn fn_rewardLoyalty;
 	firstspawn = 0;
 };
-// REWARD End
 
 player addEventHandler ["Take",
 {
@@ -146,7 +145,7 @@ if (["A3W_combatAbortDelay", 0] call getPublicVar > 0) then
 		{
 			_ammo = _this select 4;
 
-			if ({_ammo isKindOf _x} count ["PipeBombBase", "ClaymoreDirectionalMine_Remote_Ammo"] > 0) then
+			if ({_ammo isKindOf _x} count ["PipeBombBase", "ClaymoreDirectionalMine_Remote_Ammo", "APERSTripMine_Wire_Ammo", "APERSBoundingMine_Range_Ammo", "APERSMine_Range_Ammo", "SLAMDirectionalMine_Wire_Ammo", "ATMine_Range_Ammo"] > 0) then
 			{
 				_mag = _this select 5;
 				_bomb = _this select 6;

@@ -55,17 +55,18 @@ unitHandleDamage = "client\functions\unitHandleDamage.sqf" call mf_compile;
 updateTerritoryMarkers = "territory\client\updateTerritoryMarkers.sqf" call mf_compile;
 vehicleSideCfg = "client\functions\vehicleSideCfg.sqf" call mf_compile;
 weaponDisassembledEvent = "client\functions\weaponDisassembledEvent.sqf" call mf_compile;
-rewardForPlaying = "client\functions\rewardforplaying.sqf" call mf_compile;
+
+// GoT additions
+fn_rewardLoyalty = "client\functions\fn_rewardLoyalty.sqf" call mf_compile;
 
 // Player details and actions
 loadPlayerMenu = "client\systems\playerMenu\init.sqf" call mf_compile;
+playerCustomUniform = "client\functions\playerCustomUniform.sqf" call mf_compile;
 playerSpawn = "client\functions\playerSpawn.sqf" call mf_compile;
 playerSetup = "client\functions\playerSetup.sqf" call mf_compile;
 playerSetupStart = "client\functions\playerSetupStart.sqf" call mf_compile;
 playerSetupGear = "client\functions\playerSetupGear.sqf" call mf_compile;
 playerSetupEnd = "client\functions\playerSetupEnd.sqf" call mf_compile;
-// supporters = "addons\supporters\loadouts.sqf" call mf_compile; // work in progress
-// applyPlayerTexture = "addons\supporters\applyPlayertexture.sqf" call mf_compile; // work in progress
 spawnAction = "client\functions\spawnAction.sqf" call mf_compile;
 spawnInTown = "client\functions\spawnInTown.sqf" call mf_compile;
 spawnOnBeacon = "client\functions\spawnOnBeacon.sqf" call mf_compile;
