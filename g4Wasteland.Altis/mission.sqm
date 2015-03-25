@@ -2070,6 +2070,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="VehStore5";
+					init="[this] spawn A3W_fnc_setupStoreNPC";
 					description="DO NOT MODIFY IN EDITOR";
 				};
 			};
