@@ -39,7 +39,7 @@ if (_success) then
 {
 	cursorTarget setVariable ["lockDown", false, true];
 	cursorTarget setVariable ["password", "12345", true];
-	["Base Lock is hacked, the Lock Down is removed and the password is set to 12345.", 5] call mf_notify_client;
+	["Base Re-Locker is hacked, the Lock Down is removed and the password is set to 12345.", 5] call mf_notify_client;
 };
 
 mutexScriptInProgress = false;

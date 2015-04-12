@@ -17,7 +17,8 @@ if (!isNil "_uid") then {
 	_panelOptions = [
 					"Re Lock base objects",
 					"Show objects owned by you",
-					"Show Base Border"
+					"Show Base Border",
+					"Repair Re-Locker"
 	];
 
 	{

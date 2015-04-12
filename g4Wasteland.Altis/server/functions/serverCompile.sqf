@@ -38,6 +38,8 @@ setMissionState = [_path, "setMissionState.sqf"] call mf_compile;
 // Non Vanilla missions
 createsniperGroup = [_path, "createUnits\sniperGroup.sqf"] call mf_compile; 
 createsmugglerGroup = [_path, "createUnits\smugglerGroup.sqf"] call mf_compile;
+createCustomGroup3 = [_path, "createUnits\customGroup3.sqf"] call mf_compile;
+//createRandomPilot = [_path, "createUnits\createRandomPilot.sqf"] call mf_compile;
 createWaitCondition = [_path, "createWaitCondition.sqf"] call mf_compile;
 createGroup1= [_path, "createUnits\Group1.sqf"] call mf_compile;
 createGroup2= [_path, "createUnits\Group2.sqf"] call mf_compile;
@@ -96,7 +98,6 @@ boatCreation = [_path, "boatCreation.sqf"] call mf_compile;
 objectCreation = [_path, "objectCreation.sqf"] call mf_compile;
 planeCreation = [_path, "planeCreation.sqf"] call mf_compile;
 randomWeapons = [_path, "randomWeapon.sqf"] call mf_compile;
-randomAttachments = [_path, "randomAttachments.sqf"] call mf_compile;
 // staticGunCreation = [_path, "staticGunCreation.sqf"] call mf_compile;
 staticHeliCreation = [_path, "staticHeliCreation.sqf"] call mf_compile;
 vehicleCreation = [_path, "vehicleCreation.sqf"] call mf_compile;
